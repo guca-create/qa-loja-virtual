@@ -1,0 +1,17 @@
+{
+  "name": "qa-loja-virtual",
+  "version": "1.0.0",
+  "description": "Avaliação de qualidade do módulo de loja virtual (Automation Exercise) - Desafio QA CPB",
+  "private": true,
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run --env grepTags=-@bug-conhecido",
+    "test:smoke": "cypress run --env grepTags=@smoke+-@bug-conhecido",
+    "test:regressao": "cypress run --env grepTags=-@bug-conhecido",
+    "test:bugs": "cypress run --env grepTags=@bug-conhecido"
+  },
+  "devDependencies": {
+    "@cypress/grep": "4.1.0",
+    "cypress": "13.17.0"
+  }
+}

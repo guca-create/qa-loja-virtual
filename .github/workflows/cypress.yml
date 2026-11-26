@@ -1,0 +1,43 @@
+name: QA Loja Virtual
+
+on:
+  pull_request:          # smoke bloqueia o merge
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1-5' # regressão completa em dias úteis (6h, horário de Brasília)
+
+jobs:
+  smoke:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:smoke
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: evidencias-smoke, path: cypress/screenshots }
+
+  regressao:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:regressao
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: evidencias-regressao, path: cypress/screenshots }
+
+  bugs-conhecidos:
+    # Não bloqueia: avisa quando um defeito conhecido passa a funcionar (corrigido).
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cypress-io/github-action@v6
+        with:
+          command: npm run test:bugs
