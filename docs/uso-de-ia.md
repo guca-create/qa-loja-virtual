@@ -22,3 +22,4 @@ Registro feito durante o desafio. Escreva com suas palavras.
 | Exploração | A IA considerou irrelevante a falta de um X para fechar o aviso de checkout do visitante | Discordei: o usuário precisa de uma saída clara para fechar o aviso e continuar na mesma tela | Registrei como melhoria de usabilidade (D11) e pedi para refazer a evidência |
 
 ## O que revisei ou reescrevi antes de entregar
+| Revisão | A estrutura inicial do código apresentava oportunidades de melhoria em organização, legibilidade e eficiência | Analisei toda a estrutura do código-fonte, identificando pontos de otimização, redundâncias e oportunidades de refatoração | Revisei e reestruturei o código, implementando melhorias de organização, padronização e otimização, aprimorando a legibilidade, a performance, a manutenibilidade e a escalabilidade do projeto |
