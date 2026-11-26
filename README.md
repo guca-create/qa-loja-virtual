@@ -102,3 +102,4 @@ docs/               planejamento, cenários, API, observações, evidências e u
 - **Sem espera fixa**: nada de `cy.wait(<ms>)`.
 - **Anúncios bloqueados** (`blockHosts`): são de terceiros e deixavam a tela instável.
 - **Falha esperada**: título `[FALHA ESPERADA][OBS-XXX]` e tag `@bug-conhecido`. Fica fora da regressão e roda com `npm run test:bugs`.
+- **Evidências**: nomes no padrão `<frente><número>-<descrição>.png` (C carrinho, K catálogo, A API, P compra; 0 = exploração livre) e cores com significado fixo. Detalhes em [`docs/evidencias/README.md`](docs/evidencias/README.md).
