@@ -1,5 +1,8 @@
 import BasePage from './BasePage';
 
+/** Cartão de teste fictício (número padrão de testes, não é cartão real). */
+export const CARTAO_VALIDO = { nome: 'QA TESTE', numero: '4111111111111111', cvc: '123', mes: '12', ano: '2030' };
+
 class PagamentoPage extends BasePage {
   el = {
     nomeCartao: () => cy.get('[data-qa="name-on-card"]'),
@@ -9,10 +12,10 @@ class PagamentoPage extends BasePage {
     ano: () => cy.get('[data-qa="expiry-year"]'),
     pagar: () => cy.get('[data-qa="pay-button"]'),
     pedidoConfirmado: () => cy.get('[data-qa="order-placed"]'),
+    baixarFatura: () => cy.contains('a', 'Download Invoice'),
   };
 
-  // Cartão de teste fictício (número padrão de testes, não é cartão real).
-  pagar(cartao = { nome: 'QA TESTE', numero: '4111111111111111', cvc: '123', mes: '12', ano: '2030' }) {
+  pagar(cartao = CARTAO_VALIDO) {
     this.el.nomeCartao().type(cartao.nome);
     this.el.numeroCartao().type(cartao.numero, { log: false });
     this.el.cvc().type(cartao.cvc, { log: false });

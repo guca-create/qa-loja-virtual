@@ -8,6 +8,7 @@
     "test": "cypress run --env grepTags=-@bug-conhecido",
     "test:smoke": "cypress run --env grepTags=@smoke+-@bug-conhecido",
     "test:regressao": "cypress run --env grepTags=-@bug-conhecido",
+    "test:api": "cypress run --env grepTags=@api+-@bug-conhecido",
     "test:bugs": "cypress run --env grepTags=@bug-conhecido"
   },
   "devDependencies": {

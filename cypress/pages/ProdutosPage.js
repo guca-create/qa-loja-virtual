@@ -4,8 +4,6 @@ class ProdutosPage extends BasePage {
   el = {
     campoBusca: () => cy.get('#search_product'),
     botaoBusca: () => cy.get('#submit_search'),
-    cards: () => cy.get('.features_items .product-image-wrapper'),
-    nomes: () => cy.get('.features_items .productinfo p'),
     titulo: () => cy.get('.features_items .title'),
   };
 
@@ -17,15 +15,14 @@ class ProdutosPage extends BasePage {
   buscar(termo) {
     this.el.campoBusca().clear().type(termo);
     this.el.botaoBusca().click();
+    this.el.titulo().should('contain.text', 'Searched Products');
     return this;
   }
 
-  /** Nomes dos produtos exibidos na tela, como array de texto. */
+  /** Nomes exibidos na grade de produtos (vazio se não houver resultado). */
   nomesExibidos() {
-    return cy.get('body').then(($body) => {
-      const itens = $body.find('.features_items .productinfo p');
-      return [...itens].map((el) => el.innerText.trim());
-    });
+    return cy.get('.features_items').then(($grade) =>
+      $grade.find('.productinfo p').toArray().map((el) => el.textContent.trim()));
   }
 }
 
